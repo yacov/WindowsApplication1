@@ -23,17 +23,19 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.Button2)
         Me.Panel1.Controls.Add(Me.LinkLabel1)
         Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.Label2)
@@ -44,6 +46,32 @@ Partial Class Form1
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(278, 260)
         Me.Panel1.TabIndex = 0
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(18, 160)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(121, 39)
+        Me.Button2.TabIndex = 6
+        Me.Button2.Text = "Open in choosen Browser" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'LinkLabel1
+        '
+        Me.LinkLabel1.AutoSize = True
+        Me.LinkLabel1.Location = New System.Drawing.Point(15, 90)
+        Me.LinkLabel1.Name = "LinkLabel1"
+        Me.LinkLabel1.Size = New System.Drawing.Size(0, 13)
+        Me.LinkLabel1.TabIndex = 5
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(18, 54)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(121, 23)
+        Me.Button1.TabIndex = 4
+        Me.Button1.Text = "Generate URL"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'Label2
         '
@@ -58,7 +86,7 @@ Partial Class Form1
         '
         Me.TextBox1.Location = New System.Drawing.Point(21, 27)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox1.Size = New System.Drawing.Size(118, 20)
         Me.TextBox1.TabIndex = 2
         '
         'Label1
@@ -74,28 +102,12 @@ Partial Class Form1
         '
         Me.ComboBox1.AllowDrop = True
         Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"Firefox", "Chrome", "Ie"})
         Me.ComboBox1.Location = New System.Drawing.Point(18, 132)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
         Me.ComboBox1.TabIndex = 0
         Me.ComboBox1.Text = "Firefox"
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(18, 54)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(103, 23)
-        Me.Button1.TabIndex = 4
-        Me.Button1.Text = "Generate URL"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'LinkLabel1
-        '
-        Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(15, 90)
-        Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(0, 13)
-        Me.LinkLabel1.TabIndex = 5
         '
         'Form1
         '
@@ -118,4 +130,5 @@ Partial Class Form1
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Button1 As Button
     Friend WithEvents LinkLabel1 As LinkLabel
+    Friend WithEvents Button2 As Button
 End Class

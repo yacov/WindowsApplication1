@@ -5,6 +5,7 @@ Imports System.Web
 Imports System.Text
 
 Public Class Form1
+    'Function for creating URL using custom encrypt
     Private Function SSOPCG() As String
         Try
             Dim url As String = "https://dade.acceliplan.com/app/api/public/login?UserCode"
@@ -35,30 +36,7 @@ Public Class Form1
         End Try
     End Function
 
-
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
-
-    End Sub
-
-    Private Sub GoToUrl(url As String, browser As String)
-        browser =
-        url = LinkLabel1.Text
-        Process.Start(browser, url)
-    End Sub
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim urlCreated As String = SSOPCG()
-        LinkLabel1.Text = urlCreated
-
-
-
-    End Sub
-
-    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
-
-    End Sub
-
-
+    'custom encrypt function based on custom decript
     Public Function EncryptCustom(ByVal stringToEncrypt As String, ByVal sEncryptionKey As String, keySize As Integer, blockSize As Integer, cipherMode As CipherMode, paddingMode As PaddingMode) As String
         Dim inputByteArray(stringToEncrypt.Length) As Byte
         Using provider = New AesCryptoServiceProvider()
@@ -87,6 +65,7 @@ Public Class Form1
         End Using
     End Function
 
+    'Alternative function to ecrypt
     Public Function AES_Encrypt(ByVal input As String, ByVal pass As String) As String
         Dim AES As New System.Security.Cryptography.RijndaelManaged
         Dim Hash_AES As New System.Security.Cryptography.MD5CryptoServiceProvider
@@ -106,4 +85,33 @@ Public Class Form1
         End Try
     End Function
 
+
+    Private Sub GoToUrl()
+        Dim url As String
+        Dim browser As String
+        browser = ComboBox1.SelectedText
+        url = LinkLabel1.Text
+        Process.Start(browser, url)
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim urlCreated As String = SSOPCG()
+        LinkLabel1.Text = urlCreated
+
+
+
+    End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+
+    End Sub
+
+
+
+
+
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        GoToUrl()
+    End Sub
 End Class
