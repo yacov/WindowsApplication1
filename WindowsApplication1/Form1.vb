@@ -89,11 +89,24 @@ Public Class Form1
     Private Sub GoToUrl()
         Dim url As String
         Dim browser As String
-        browser = ComboBox1.SelectedText
-        'url = LinkLabel1.Text
-        url = "https://dade.acceliplan.com/app/api/public/login?UserCode=TURVQVQwMDEAAAAAAAAAAMkImQ8qQFCwcYD72DxBHPA%3d&AuthKey=MDcvMTIvMjAxNiAwNDo0M3ajLdeDlIF49nWymwTiEufcub%2fydKSz2V63%2fOi03e%2bq"
+        Dim name As String
+        browser = ""
+        name = ComboBox1.SelectedText
+
+        Select Case name
+            Case "Chrome"
+                browser = "C:\Program Files (x86)\Mozilla Firefox\firefox.exe"
+            Case "Firefox"
+                browser = "C:\Program Files (x86)\Mozilla Firefox\firefox.exe"
+            Case "Ie"
+                browser = "ieexplore.exe"
+        End Select
+
+
+        url = LinkLabel1.Text
+        'url = "https://dade.acceliplan.com/app/api/public/login?UserCode=TURVQVQwMDEAAAAAAAAAAMkImQ8qQFCwcYD72DxBHPA%3d&AuthKey=MDcvMTIvMjAxNiAwNDo0M3ajLdeDlIF49nWymwTiEufcub%2fydKSz2V63%2fOi03e%2bq"
         ' Process.Start(browser, url)
-        Process.Start(url)
+        Process.Start(browser, url)
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
