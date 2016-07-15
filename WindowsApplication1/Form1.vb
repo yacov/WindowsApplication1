@@ -2,6 +2,7 @@
 Imports System.Net.Http
 Imports System.Security.Cryptography
 Imports System.Web
+Imports System.Text
 
 Public Class Form1
     Private Function SSOPCG() As String
@@ -26,6 +27,8 @@ Public Class Form1
             data = url & HttpContext.Current.Server.UrlEncode(EncryptCustom(uc, key, 256, 128, CipherMode.CBC, System.Security.Cryptography.PaddingMode.PKCS7)) _
                     & "&AuthKey=" & HttpContext.Current.Server.UrlEncode(EncryptCustom(ak, key, 256, 128, System.Security.Cryptography.CipherMode.CBC, System.Security.Cryptography.PaddingMode.PKCS7))
 
+
+            Console.WriteLine(data)
             Return data
         Catch ex As Exception
             Return ex.Message
@@ -74,7 +77,7 @@ Public Class Form1
                 provider.IV = iv
                 Using encryptor = provider.CreateEncryptor()
 
-                    Using cs = New CryptoStream(ms, encryptor, CryptoStreamMode.Read)
+                    Using cs = New CryptoStream(ms, encryptor, CryptoStreamMode.Write)
                         Using sr = New StreamReader(cs)
                             Return sr.ReadToEnd()
                         End Using
