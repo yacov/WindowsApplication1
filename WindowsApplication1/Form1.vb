@@ -90,8 +90,10 @@ Public Class Form1
         Dim url As String
         Dim browser As String
         browser = ComboBox1.SelectedText
-        url = LinkLabel1.Text
-        Process.Start(browser, url)
+        'url = LinkLabel1.Text
+        url = "https://dade.acceliplan.com/app/api/public/login?UserCode=TURVQVQwMDEAAAAAAAAAAMkImQ8qQFCwcYD72DxBHPA%3d&AuthKey=MDcvMTIvMjAxNiAwNDo0M3ajLdeDlIF49nWymwTiEufcub%2fydKSz2V63%2fOi03e%2bq"
+        ' Process.Start(browser, url)
+        Process.Start(url)
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
