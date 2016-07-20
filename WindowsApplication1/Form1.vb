@@ -1,5 +1,4 @@
 ﻿Imports System.IO
-Imports System.Net.Http
 Imports System.Security.Cryptography
 Imports System.Web
 Imports System.Text
@@ -25,8 +24,8 @@ Public Class Form1
 
             'PCG is using Perl on their side so both userCode and authKey values had to be Base64-encoded to avoid errors related to character sets.
             'Also, PCG is only URL-decoding both userCode and authKey values and not the whole URL
-            data = url & HttpContext.Current.Server.UrlEncode(EncryptCustom(uc, key, 256, 128, CipherMode.CBC, System.Security.Cryptography.PaddingMode.PKCS7)) _
-                    & "&AuthKey=" & HttpContext.Current.Server.UrlEncode(EncryptCustom(ak, key, 256, 128, System.Security.Cryptography.CipherMode.CBC, System.Security.Cryptography.PaddingMode.PKCS7))
+            data = url & System.Web.HttpUtility.HtmlEncode(EncryptCustom(uc, key, 256, 128, CipherMode.CBC, System.Security.Cryptography.PaddingMode.PKCS7)) _
+                    & "&AuthKey=" & System.Web.HttpUtility.HtmlEncode(EncryptCustom(ak, key, 256, 128, System.Security.Cryptography.CipherMode.CBC, System.Security.Cryptography.PaddingMode.PKCS7))
 
 
             Console.WriteLine(data)
