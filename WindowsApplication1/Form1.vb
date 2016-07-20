@@ -7,7 +7,7 @@ Public Class Form1
     'Function for creating URL using custom encrypt
     Private Function SSOPCG() As String
         Try
-            Dim url As String = "https://dade.acceliplan.com/app/api/public/login?UserCode"
+            Dim url As String = "https://dade.acceliplan.com/app/api/public/login?UserCode="
 
 
             Dim USERID As String = TextBox1.Text
@@ -19,13 +19,12 @@ Public Class Form1
             '  Dim uc As String = Utilities.base64Encode(USERID.Trim)
             '  Dim ak As String = Utilities.base64Encode(DATETIME.Trim)
 
-            Dim uc As String = Convert.ToBase64String(New System.Text.ASCIIEncoding().GetBytes(USERID.Trim))
-            Dim ak As String = Convert.ToBase64String(New System.Text.ASCIIEncoding().GetBytes(DATETIME.Trim))
+            Dim uc As String = Convert.ToBase64String(New System.Text.UTF8Encoding().GetBytes(USERID.Trim))
+            Dim ak As String = Convert.ToBase64String(New System.Text.UTF8Encoding().GetBytes(DATETIME.Trim))
 
             'PCG is using Perl on their side so both userCode and authKey values had to be Base64-encoded to avoid errors related to character sets.
             'Also, PCG is only URL-decoding both userCode and authKey values and not the whole URL
-            data = url & System.Web.HttpUtility.HtmlEncode(EncryptCustom(uc, key, 256, 128, CipherMode.CBC, System.Security.Cryptography.PaddingMode.PKCS7)) _
-                    & "&AuthKey=" & System.Web.HttpUtility.HtmlEncode(EncryptCustom(ak, key, 256, 128, System.Security.Cryptography.CipherMode.CBC, System.Security.Cryptography.PaddingMode.PKCS7))
+            data = url & System.Web.HttpUtility.HtmlEncode(AES_Encrypt(uc, key)) & "&AuthKey=" & System.Web.HttpUtility.HtmlEncode(AES_Encrypt(ak, key))
 
 
             Console.WriteLine(data)
@@ -71,7 +70,7 @@ Public Class Form1
         Dim encrypted As String = ""
         Try
             Dim hash(31) As Byte
-            Dim temp As Byte() = Hash_AES.ComputeHash(System.Text.ASCIIEncoding.ASCII.GetBytes(pass))
+            Dim temp As Byte() = Hash_AES.ComputeHash(Encoding.ASCII.GetBytes(pass))
             Array.Copy(temp, 0, hash, 0, 16)
             Array.Copy(temp, 0, hash, 15, 16)
             AES.Key = hash
@@ -105,7 +104,7 @@ Public Class Form1
         url = LinkLabel1.Text
         'url = "https://dade.acceliplan.com/app/api/public/login?UserCode=TURVQVQwMDEAAAAAAAAAAMkImQ8qQFCwcYD72DxBHPA%3d&AuthKey=MDcvMTIvMjAxNiAwNDo0M3ajLdeDlIF49nWymwTiEufcub%2fydKSz2V63%2fOi03e%2bq"
         ' Process.Start(browser, url)
-        Process.Start(browser, url)
+        Process.Start(url)
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
