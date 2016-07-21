@@ -23,38 +23,25 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.URLGen = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
         '
-        Me.Panel1.Controls.Add(Me.Button2)
+        Me.Panel1.Controls.Add(Me.URLGen)
         Me.Panel1.Controls.Add(Me.LinkLabel1)
         Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.TextBox1)
-        Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Controls.Add(Me.ComboBox1)
         Me.Panel1.Location = New System.Drawing.Point(7, 1)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(278, 260)
+        Me.Panel1.Size = New System.Drawing.Size(505, 260)
         Me.Panel1.TabIndex = 0
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(18, 160)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(121, 39)
-        Me.Button2.TabIndex = 6
-        Me.Button2.Text = "Open in choosen Browser" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        Me.Button2.UseVisualStyleBackColor = True
         '
         'LinkLabel1
         '
@@ -89,34 +76,21 @@ Partial Class Form1
         Me.TextBox1.Size = New System.Drawing.Size(118, 20)
         Me.TextBox1.TabIndex = 2
         '
-        'Label1
+        'URLGen
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(18, 112)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(84, 13)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Choose Browser"
-        '
-        'ComboBox1
-        '
-        Me.ComboBox1.AllowDrop = True
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Firefox", "Chrome", "Ie"})
-        Me.ComboBox1.Location = New System.Drawing.Point(18, 132)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox1.TabIndex = 0
-        Me.ComboBox1.Text = "Firefox"
+        Me.URLGen.Location = New System.Drawing.Point(18, 83)
+        Me.URLGen.Name = "URLGen"
+        Me.URLGen.Size = New System.Drawing.Size(173, 20)
+        Me.URLGen.TabIndex = 7
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(284, 261)
+        Me.ClientSize = New System.Drawing.Size(524, 273)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "Form1"
-        Me.Text = "Form1"
+        Me.Text = "URLChecker"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
@@ -124,11 +98,9 @@ Partial Class Form1
     End Sub
 
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents Label1 As Label
-    Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Label2 As Label
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Button1 As Button
     Friend WithEvents LinkLabel1 As LinkLabel
-    Friend WithEvents Button2 As Button
+    Friend WithEvents URLGen As TextBox
 End Class
